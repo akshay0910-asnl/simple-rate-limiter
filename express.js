@@ -23,7 +23,7 @@ app.post('/configure', (req, res) => {
         (configuration[clientid]['destroySetInterval'].bind(configuration[clientid]))();
     }
     configuration[clientid] = { limit, seconds, count: 0, key: clientid };
-    configuration[clientid]['resetCount'] = resetCount.bind(configuration[clientid]);
+    configuration[clientid]['resetCount'] = resetCount;
     configuration[clientid]['destroySetInterval'] = destroySetInterval;
     (configuration[clientid]['resetCount'].bind(configuration[clientid]))();
     return res.send({ message: 'OK' }).end();
